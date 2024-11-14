@@ -9,9 +9,7 @@ public static class AppExcention
     {
         host.UseSerilog((context,loggerConfig)=>
         {
-            loggerConfig.WriteTo.Console();
-
-            loggerConfig.WriteTo.File(new JsonFormatter(),"logs/applogs-.txt",rollingInterval:RollingInterval.Day);
+            loggerConfig.ReadFrom.Configuration(context.Configuration);
         });
     }
 }
